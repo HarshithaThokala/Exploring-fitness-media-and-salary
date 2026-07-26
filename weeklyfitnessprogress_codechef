@@ -1,0 +1,55 @@
+import numpy as np
+
+
+# Generate Step Data
+def generate_step_data():
+    np.random.seed(42)
+    steps = np.random.randint(3000, 12001, 7)
+    return steps
+
+
+# Reshape Weekly Data
+def reshape_weekly_data(steps):
+    weekly_matrix = np.reshape(steps, (1, 7))
+    return weekly_matrix
+
+
+# Weekly Analysis
+def analyze_weekly_data(weekly_matrix):
+    total_steps = np.sum(weekly_matrix)
+    average_steps = np.mean(weekly_matrix)
+    return total_steps, average_steps
+
+# Identify Peak Activity
+def find_peak_activity(steps):
+    max_index = np.argmax(steps)
+    min_index = np.argmin(steps)
+    return max_index, min_index
+
+
+# Sort Data
+def sort_step_counts(steps):
+    sorted_steps = np.sort(steps)
+    return sorted_steps
+
+
+# Main Program
+if __name__ == "__main__":
+    print("Weekly Fitness Progress Analyzer...\n")
+
+    steps = generate_step_data()
+    print("Daily Step Counts (Raw):", steps)
+
+    weekly_matrix = reshape_weekly_data(steps)
+    print("Weekly Matrix Shape:", weekly_matrix.shape)
+
+    total_steps, average_steps = analyze_weekly_data(weekly_matrix)
+    print("\nTotal Weekly Steps:", total_steps[0])
+    print("Average Daily Steps: {:.2f}".format(average_steps[0]))
+
+    max_index, min_index = find_peak_activity(steps)
+    print(f"\nMost Active Day Index: {max_index} (Steps: {steps[max_index]})")
+    print(f"Least Active Day Index: {min_index} (Steps: {steps[min_index]})")
+
+    sorted_steps = sort_step_counts(steps)
+    print("\nSorted Steps:", sorted_steps)
