@@ -28,7 +28,7 @@ def find_peak_activity(steps):
 
 
 # Sort Data
-def sort_step_counts(steps):
+def sort_step_counts(steps)Z
     sorted_steps = np.sort(steps)
     return sorted_steps
 
